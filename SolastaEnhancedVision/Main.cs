@@ -41,7 +41,7 @@ namespace SolastaEnhancedVision
         }
 
         [HarmonyPatch(typeof(MainMenuScreen), "RuntimeLoaded")]
-        static class MainMenuScreen_Load_Patch
+        static class MainMenuScreen_RuntimeLoaded_Patch
         {
             static void Postfix()
             {
