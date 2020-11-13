@@ -1,0 +1,9 @@
+﻿{
+	"Id": "SolastaEnhancedVision",
+	"DisplayName": "SolastaEnhancedVision",
+	"Author": "Zappastuff",
+	"Version": "1.0.0",
+	"ManagerVersion": "0.22.13",
+	"AssemblyName": "SolastaEnhancedVision.dll",
+	"EntryMethod": "SolastaEnhancedVision.Main.Load"
+}
