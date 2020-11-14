@@ -47,17 +47,25 @@ namespace SolastaEnhancedVision
             {
                 try
                 {
-                    var human = DatabaseRepository.GetDatabase<CharacterRaceDefinition>().GetElement("Human");
+                    var senseDarkvision = DatabaseRepository.GetDatabase<FeatureDefinition>().GetElement("SenseDarkvision");
                     var senseSuperiorDarkvision = DatabaseRepository.GetDatabase<FeatureDefinition>().GetElement("SenseSuperiorDarkvision");
-                    var featureUnlockSenseSuperiorDarkvision = new FeatureUnlockByLevel(senseSuperiorDarkvision, 1);
-                    human.FeatureUnlocks.Add(featureUnlockSenseSuperiorDarkvision);
+                    foreach (CharacterRaceDefinition characterRaceDefinition in DatabaseRepository.GetDatabase<CharacterRaceDefinition>().GetAllElements())
+                    {
+                        if(characterRaceDefinition.FeatureUnlocks.Find(x => x.FeatureDefinition.name == "SenseDarkvision") is null)
+                        {
+                            characterRaceDefinition.FeatureUnlocks.Add(new FeatureUnlockByLevel(senseDarkvision, 1));
+                        }
+                        if(characterRaceDefinition.FeatureUnlocks.Find(x => x.FeatureDefinition.name == "SenseSuperiorDarkvision") is null)
+                        {
+                            characterRaceDefinition.FeatureUnlocks.Add(new FeatureUnlockByLevel(senseSuperiorDarkvision, 1));
+                        }
+                    }
                 }
                 catch (Exception ex)
                 {
                     Error(ex);
                     throw ex;
                 }
-
             }
         }
     }
